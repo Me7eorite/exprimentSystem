@@ -1,6 +1,5 @@
 package com.me7eorite.config;
 
-<<<<<<< HEAD
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
@@ -51,17 +50,5 @@ public class ShiroConfig {
         return shiroRealm;
     }
 
-=======
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.context.annotation.Configuration;
-
-/**
- * @Author Me7eorite
- * @Date 2021/12/22 22:44
- * @Description
- */
-@Configuration
-public class ShiroConfig {
->>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
 
 }

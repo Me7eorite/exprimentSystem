@@ -49,6 +49,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if(user.getStatus() == 0){
             throw new LockedAccountException("账号已经被锁定，请联系管理员!");
         }
-        return new SimpleAuthenticationInfo(user,password,getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,password,getName());
+        return info;
     }
 }
