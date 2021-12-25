@@ -1,10 +1,17 @@
 {
   "homeInfo": {
     "title": "首页",
+<<<<<<< HEAD
     "href": "user/welcome"
   },
   "logoInfo": {
     "title": "设备管理系统",
+=======
+    "href": "page/welcome-1.html?t=1"
+  },
+  "logoInfo": {
+    "title": "实验管理系统",
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
     "image": "images/logo.png",
     "href": ""
   },
@@ -16,26 +23,41 @@
       "target": "_self",
       "child": [
         {
+<<<<<<< HEAD
           "title": "使用管理",
+=======
+          "title": "设备管理",
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
           "href": "",
           "icon": "fa fa-home",
           "target": "_self",
           "child": [
             {
+<<<<<<< HEAD
               "title": "使用情况",
               "href": "user/use",
+=======
+              "title": "我的借用",
+              "href": "/menu/toMenuLeft",
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
+<<<<<<< HEAD
               "title": "使用申请",
               "href": "user/apply",
+=======
+              "title": "借用申请",
+              "href": "page/welcome-2.html",
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
           ]
         },
         {
+<<<<<<< HEAD
           "title": "账单管理",
           "href": "",
           "icon": "fa fa-calendar",
@@ -45,10 +67,22 @@
               "title": "购买统计",
               "href": "page/form.html",
               "icon": "fa fa-list-alt",
+=======
+          "title": "统计管理",
+          "href": "page/menu.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "损坏统计",
+              "href": "/menu/toMenuLeft",
+              "icon": "fa fa-tachometer",
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
               "target": "_self"
             },
             {
               "title": "修理统计",
+<<<<<<< HEAD
               "href": "page/form-step.html",
               "icon": "fa fa-navicon",
               "target": "_self"
@@ -79,6 +113,71 @@
               "href": "page/login-2.html",
               "icon": "fa fa-viacoin",
               "target": "_blank"
+=======
+              "href": "page/welcome-2.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "仓库管理",
+          "href": "page/setting.html",
+          "icon": "fa fa-gears",
+          "target": "_self",
+          "child": [
+            {
+              "title": "损坏统计",
+              "href": "/menu/toMenuLeft",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "修理统计",
+              "href": "page/welcome-2.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "表格示例",
+          "href": "page/table.html",
+          "icon": "fa fa-file-text",
+          "target": "_self"
+        },
+        {
+          "title": "表单示例",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "普通表单",
+              "href": "page/form.html",
+              "icon": "fa fa-list-alt",
+              "target": "_self"
+            },
+            {
+              "title": "分步表单",
+              "href": "page/form-step.html",
+              "icon": "fa fa-navicon",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "异常页面",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "404页面",
+              "href": "page/404.html",
+              "icon": "fa fa-hourglass-end",
+              "target": "_self"
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
             }
           ]
         },

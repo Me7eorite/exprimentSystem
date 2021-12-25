@@ -13,4 +13,8 @@
 （5）本系统的输出项至少包括：设备购买申请表、修理/报废设备资金统计表。
 3.开发技术栈
 
+<<<<<<< HEAD
 Springboot+mybatis+layui+thymeleaf`
+=======
+ Springboot+mybatis+layui+thymeleaf`
+>>>>>>> fe028260860793a0e70c3450fcfc3fe1d77dd2f8
