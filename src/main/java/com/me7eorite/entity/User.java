@@ -17,5 +17,5 @@ public class User {
     private int gender;//性别
     private String pwd;//密码
     private String salt; //加盐
-    private int status;//状态 冻结、可查看、可借阅、可修改
+    private int status;//状态 冻结、可使用
 }

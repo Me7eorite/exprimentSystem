@@ -46,7 +46,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if(!password.equals(user.getPwd())){
             throw new IncorrectCredentialsException("用户名或密码错误");
         }
-        if(user.getStatus() == 0){
+        if(user.getStatus()== 0){
             throw new LockedAccountException("账号已经被锁定，请联系管理员!");
         }
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,password,getName());

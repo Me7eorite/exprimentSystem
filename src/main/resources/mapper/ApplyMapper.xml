@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespache是绑定一个对应的dao或者mapper接口-->
+<mapper namespace="com.me7eorite.mapper.ApplyMapper">
+    <resultMap id="applyQuery" type="com.me7eorite.entity.Apply">
+        <id column="id" property="id" javaType="java.lang.Integer" jdbcType="NUMERIC"/>
+        <id column="tid" property="tid" javaType="java.lang.Integer" jdbcType="VARCHAR"/>
+        <id column="uname" property="uname" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="num" property="num" javaType="java.lang.Integer" jdbcType="NUMERIC"/>
+        <id column="status" property="status" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="create_time" property="createTime" javaType="java.util.Date" jdbcType="DATE"/>
+        <id column="remarks" property="remarks" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="rtype" property="rtype" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryAllList" resultType="com.me7eorite.entity.Apply">
+        select * from apply
+    </select>
+    <update id="update">
+        update apply SET status="驳回" WHERE id=#{id}
+    </update>
+    <select id="addApplyForm" parameterType="com.me7eorite.entity.Apply" resultType="java.lang.Integer">
+
+        INSERT INTO apply(`uname`,`tid`,`num`,`rtype`,`remarks`,`status`) values (#{uname},#{tid},#{num},#{rtype},#{remarks},#{status})
+    </select>
+    <select id="queryApplyByStatus" resultType="com.me7eorite.entity.Apply">
+        select * from apply where status = #{status}
+    </select>
+    <update id="updateByObject">
+        UPDATE apply set status=#{status},remarks=#{remarks} where id=#{id}
+    </update>
+</mapper>

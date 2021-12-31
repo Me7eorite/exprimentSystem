@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespache是绑定一个对应的dao或者mapper接口-->
+<mapper namespace="com.me7eorite.mapper.BorrowMapper">
+<resultMap id="BorrowResult" type="com.me7eorite.entity.Borrow">
+    <id column="id" property="id"/>
+    <result column="quantity" property="quantity"/>
+    <result column="create_time" property="createTime"/>
+    <result column="end_time" property="endTime"/>
+    <result column="status" property="status"/>
+    <result column="creator" property="creator"/>
+    <association property="device" javaType="com.me7eorite.entity.Device">
+        <result column="dname" property="name"/>
+        <result column="dtid" property="tid"/>
+    </association>
+</resultMap>
+    <select id="queryAllBorrow" resultMap="BorrowResult">
+    select bo.id,bo.quantity,bo.create_time,bo.end_time,bo.creator,bo.status,de.name dname,de.tid dtid from borrow bo,device de WHERE bo.tid=de.id and bo.status=#{status}
+    </select>
+   <select id="queryByStatus" resultMap="BorrowResult" >
+       select * from borrow where status=#{status}
+   </select>
+
+<insert id="insert" parameterType="com.me7eorite.entity.Borrow">
+    INSERT INTO borrow(`tid`,`quantity`,`create_time`,`end_time`,`status`,`creator`,`remarks`) values(#{tid},#{quantity},#{createTime},#{endTime},#{status},#{creator},#{remarks})
+</insert>
+<update id="update" >
+    UPDATE borrow SET status=#{status},remarks=#{remarks} where id=#{id}
+</update>
+
+
+</mapper>

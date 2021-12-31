@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespache是绑定一个对应的dao或者mapper接口-->
+<mapper namespace="com.me7eorite.mapper.DeviceMapper">
+    <resultMap id="deviceResult" type="com.me7eorite.entity.Device">
+        <id column="id" property="id" javaType="java.lang.Integer" jdbcType="NUMERIC"/>
+        <id column="tid" property="tid" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="type" property="type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="name" property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="standard" property="standard" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="unit_price" property="unitPrice" javaType="java.lang.Double" jdbcType="NUMERIC"/>
+        <id column="totally" property="totally" javaType="java.lang.Integer" jdbcType="NUMERIC"/>
+        <id column="create_time" property="createTime" javaType="java.util.Date" jdbcType="DATE"/>
+        <id column="dead_line" property="deadLine" javaType="java.util.Date" jdbcType="DATE"/>
+        <id column="creator" property="creator" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="status" property="status" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <id column="free_device" property="freeDevice" javaType="java.lang.Integer" jdbcType="NUMERIC"/>
+    </resultMap>
+    <select id="queryAllList" resultMap="deviceResult">
+        select * from expriment.device
+    </select>
+
+    <select id="queryAllBroke" resultMap="deviceResult">
+        select * from expriment.device where status = "报废"
+    </select>
+
+    <select id="queryAllFix" resultMap="deviceResult">
+        select * from expriment.device where status = "修理"
+    </select>
+    <insert id="addDevice" parameterType="com.me7eorite.entity.Device" >
+        INSERT INTO device (`tid`,`type`,`name`,`standard`,`unit_price`,`totally`,`create_time`,`creator`,`status`) values (#{tid},#{type},#{name},#{standard},#{unitPrice},#{totally},#{createTime},#{creator},#{status})
+    </insert>
+
+    <select id="queryByTid" resultMap="deviceResult">
+        select * from device where tid=#{tid}
+    </select>
+    <select id="queryByStatus" resultMap="deviceResult">
+        select * from device
+        <if test="status =='使用中' ">
+            where status="使用" or status = "空闲" or status = "部分空闲" or status="创建" or status="采购" or "申请"
+        </if>
+    </select>
+    <update id="update">
+        UPDATE device SET status=#{status} ,remarks=#{remarks} WHERE id=#{id}
+    </update>
+
+</mapper>

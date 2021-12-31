@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>分步表单</title>
+    <title>设备申请</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,47 +17,40 @@
         <div class="layui-fluid">
             <div class="layui-card">
                 <div class="layui-card-body" style="padding-top: 40px;">
-                    <div class="layui-carousel" id="stepForm" lay-filter="stepForm" style="margin: 0 auto;">
+                    <div class="layui-carousel" id="stepForm" lay-filter="stepForm" style="margin: 0 auto">
                         <div carousel-item>
                             <div>
                                 <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">游戏ID:</label>
+                                        <label class="layui-form-label">申请人:</label>
                                         <div class="layui-input-block">
-                                            <input type="text" placeholder="请填写入款人游戏ID" class="layui-input" lay-verify="number" required />
+                                            <input name="creator" type="text" placeholder="申请人姓名" class="layui-input" th:value="${uname}" required disabled/>
 
                                         </div>
                                     </div>
+
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">入款金额:</label>
+                                        <label class="layui-form-label">设备型号:</label>
                                         <div class="layui-input-block">
-                                            <input type="number" placeholder="请填写入款金额" value="" class="layui-input" lay-verify="number" required>
+                                            <input name="tid"  type="text" placeholder="请填入借用的型号" value="" class="layui-input"  required>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">入款类型:</label>
+                                        <label class="layui-form-label">申请数量:</label>
                                         <div class="layui-input-block">
-                                            <select lay-verify="required">
-                                                <option value="1" selected>保险箱</option>
-                                                <option value="2">现金</option>
-                                            </select>
+                                            <input name="quantity" type="number" placeholder="请填入需要借用的数量" value="" class="layui-input" lay-verify="number" required>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">入款方式:</label>
+                                        <label class="layui-form-label">归还时间:</label>
                                         <div class="layui-input-block">
-                                            <select lay-verify="required">
-                                                <option value="1" selected>人工入款</option>
-                                                <option value="2">修正</option>
-                                                <option value="3">活动</option>
-                                                <option value="4">佣金</option>
-                                            </select>
+                                            <input name="endTime" type="date" placeholder="预期归还时间" value="" class="layui-input"  required />
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">备注说明:</label>
+                                        <label class="layui-form-label">用途说明:</label>
                                         <div class="layui-input-block">
-                                            <textarea placeholder="入款备注" value="" class="layui-textarea"></textarea>
+                                            <textarea name="remarks" placeholder="申请备注" value="" class="layui-textarea"></textarea>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
@@ -69,51 +62,50 @@
                                     </div>
                                 </form>
                             </div>
+
+
+
                             <div>
                                 <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">游戏ID:</label>
+                                        <label class="layui-form-label">申请人:</label>
                                         <div class="layui-input-block">
-                                            <div class="layui-form-mid layui-word-aux">639537</div>
+                                            <div class="layui-form-mid layui-word-aux"><cite><span th:text="${uname}"></span></cite></div>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">账户余额:</label>
+                                        <label class="layui-form-label">申请编号:</label>
                                         <div class="layui-input-block">
-                                            <div class="layui-form-mid layui-word-aux">3000 元（保险箱：1000，现金：2000）</div>
+                                            <div class="layui-form-mid layui-word-aux"><span id="tid">t-001</span></div>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">入款金额:</label>
+                                        <label class="layui-form-label">申请数量:</label>
                                         <div class="layui-input-block">
                                             <div class="layui-form-mid layui-word-aux">
-                                                <span style="font-size: 18px;color: #333;">1800 元</span>
+                                                <span style="font-size: 18px;color: #333;" id="quantity">0</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">入款类型:</label>
+                                        <label class="layui-form-label">归还时间:</label>
                                         <div class="layui-input-block">
-                                            <div class="layui-form-mid layui-word-aux">保险箱</div>
+                                            <span style="font-size: 18px;color: #333;" id="endTime">0</span>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">入款方式:</label>
+                                        <label class="layui-form-label">用途说明:</label>
                                         <div class="layui-input-block">
-                                            <div class="layui-form-mid layui-word-aux">人工入款</div>
-                                        </div>
-                                    </div>
-                                    <div class="layui-form-item">
-                                        <label class="layui-form-label">备注说明:</label>
-                                        <div class="layui-input-block">
-                                            <div class="layui-form-mid layui-word-aux">备注说明</div>
+                                            <div class="layui-form-mid layui-word-aux">
+                                                <span style="font-size: 18px;color: #333;" id="remarks">0</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
                                         <div class="layui-input-block">
                                             <button type="button" class="layui-btn layui-btn-primary pre">上一步</button>
                                             <button class="layui-btn" lay-submit lay-filter="formStep2">
-                                                &emsp;确认入款&emsp;
+                                                &emsp;确认申请&emsp;
                                             </button>
                                         </div>
                                     </div>
@@ -124,25 +116,18 @@
                                     <i class="layui-icon layui-circle"
                                        style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
                                     <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
-                                        入款成功
+                                        申请成功
                                     </div>
-                                    <div style="font-size: 14px;color: #666;margin-top: 20px;">预计两小时到账</div>
+                                    <div style="font-size: 14px;color: #666;margin-top: 20px;">等待审核</div>
                                 </div>
                                 <div style="text-align: center;margin-top: 50px;">
-                                    <button class="layui-btn next">再入一笔</button>
-                                    <button class="layui-btn layui-btn-primary">查看账单</button>
+                                    <button class="layui-btn next">申请其他设备</button>
+                                    <button class="layui-btn layui-btn-primary">查看我的申请</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div style="color: #666;margin-top: 30px;margin-bottom: 40px;padding-left: 30px;">
-                        <h3>说明</h3><br>
-                        <h4>入款到保险箱</h4>
-                        <p>如果需要，这里可以放一些关于产品的常见问题说明。</p>
-                        <br><h4>入款到现金</h4>
-                        <p>如果需要，这里可以放一些关于产品的常见问题说明。</p>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -152,6 +137,7 @@
 <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
 <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
+    var datafield = null;
     layui.use([ 'form', 'step'], function () {
         var $ = layui.$,
             form = layui.form,
@@ -164,9 +150,9 @@
             stepWidth: '750px',
             height: '500px',
             stepItems: [{
-                title: '填写入款信息'
+                title: '填写申请信息'
             }, {
-                title: '确认入款信息'
+                title: '确认申请信息'
             }, {
                 title: '完成'
             }]
@@ -174,11 +160,34 @@
 
 
         form.on('submit(formStep)', function (data) {
+            $.ajax({
+                contentType: "application/json;charset=utf-8",
+                url: "../device/query?tid="+data.field.tid,
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(datafield),
+                success: function (pdata) {
+                    data.field.tid = pdata.id;
+                    data.field.tid = pdata.id;
+                }
+            });
+            document.getElementById("tid").innerText=data.field.tid;
+            document.getElementById("quantity").innerText=data.field.quantity
+            document.getElementById("endTime").innerText=data.field.endTime
+            document.getElementById("remarks").innerText=data.field.remarks;
+            datafield = data.field;
             step.next('#stepForm');
             return false;
         });
 
         form.on('submit(formStep2)', function (data) {
+            $.ajax({
+                contentType: "application/json;charset=utf-8",
+                url: "../borrow/new",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(datafield)
+                });
             step.next('#stepForm');
             return false;
         });
